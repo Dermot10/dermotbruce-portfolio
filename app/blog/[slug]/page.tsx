@@ -1,0 +1,1 @@
+// app/blog/[slug]/page.tsx → shows a single blog post based on the URL

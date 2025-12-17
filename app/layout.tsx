@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
       </head>
-      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+      <body className="bg-white text-black dark:bg-gray-700 dark:text-white transition-colors duration-300">
         {/* Navbar is a client component, can toggle dark mode */}
         <Navbar />
         <main className="max-w-5xl mx-auto px-6 py-12">{children}</main>

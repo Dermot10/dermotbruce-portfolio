@@ -32,11 +32,12 @@ export default function Hero() {
         ref={heroRef}
         className="bg-surface text-text text-center py-24 px-6 transition-colors duration-300"
         // style={{
-        //   backgroundImage: "url(/blue-purple.jpg)",
+        //   backgroundImage: "url(/blue-purple-main.jpg)",
         //   backgroundSize: "cover", 
         //   backgroundPosition: "center",
         // }}
       >
+    
       <h1 className="text-5xl font-bold mb-4 hero-title">
         <span className="inline-block">Dermot</span>{" "}
         <span className="inline-block">Bruce-Agbeko</span>

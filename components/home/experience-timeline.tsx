@@ -30,10 +30,13 @@ const experience = [
     period: '2023 – 2024',
     description:
       ` • Automated internal processes for cybersecurity team, using both Python and low-code solution Tines.
-            > Built integrations between third-party solutions and SIEM platform.
-            > Architecting the migration of the existing detection model
-            > Configured threat intelligence feeds
-            > Reporting and metrics for c-suite executives 
+            > Built integrations between third-party solutions and SIEM platform, allowing for logs to be correctly sent to the SIEM platform. 
+            > Integrated AI into automative processes, handling edge-cases through stringent guardrails. 
+            > Architecting the migration of the existing detection model to a version control model. 
+            > Configured threat intelligence feeds to assist in data enrichment. 
+            > Reporting and metrics for c-suite executives, personally tracking the performance of the third-party security solutions.
+            > Blue team level certified, 
+            > Splunk SIEM and ES paid academy completed
         • Chaired automation demos for the cybersecurity team.
         • Organised team event days.
         • Hosted build sessions within the team to bolster knowledge sharing and collaboration.`
@@ -91,7 +94,7 @@ export default function ExperienceTimelinePage() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-20 max-w-5xl mx-auto px-4">
+    <section ref={sectionRef} className="relative py-48 max-w-5xl mx-auto px-4">
       <h2 className="text-3xl font-semibold text-center mb-16">Experience</h2>
 
       <div className="relative">
@@ -127,10 +130,13 @@ export default function ExperienceTimelinePage() {
                     <li>
                       Automated internal processes for cybersecurity team, using both Python and low-code solution Tines.
                       <ul className="list-disc ml-6 mt-1 space-y-1">
-                        <li>Built integrations between third-party solutions and SIEM platform.</li>
-                        <li>Architecting the migration of the existing detection model</li>
-                        <li>Configured threat intelligence feeds</li>
-                        <li>Reporting and metrics for c-suite executives</li>
+                        <li>Built integrations between third-party solutions and SIEM platform, allowing for security logs and telemetry to be correctly sent to the SIEM platform.</li>
+                        <li>Integrated AI into automative processes, handling edge-cases through stringent guardrails. </li>
+                        <li>Architecting the migration of the existing detection model to a version control model.</li>
+                        <li>Configured threat intelligence feeds to assist in data enrichment. </li>
+                        <li>Reporting and metrics for c-suite executives, personally tracking the performance of the third-party security solutions.</li>
+                        <li>Blue team level certified</li>
+                        <li>Splunk SIEM and ES paid academy completed</li>
                       </ul>
                     </li>
                     <li>Chaired automation demos for the cybersecurity team.</li>
@@ -142,7 +148,6 @@ export default function ExperienceTimelinePage() {
                 )}
               </div>
             </div>
-
             </li>
           ))}
         </ul>

@@ -1,40 +1,72 @@
+'use client';
+
+import { FaCode, FaCloud, FaBrain } from 'react-icons/fa';
+
 export default function AboutPage() {
+  const skills = ["Go", "Next.js / React", "Python", "PostgreSQL", "AI / Automation"];
+
   return (
-    <section className="py-12 max-w-4xl mx-auto px-4">
-      <h1 className="text-4xl font-bold mb-8 text-center">About</h1>
+    <section className="py-16 bg-[#161B22] text-[#C9D1D9] min-h-screen">
+      <div className="max-w-5xl mx-auto px-6 flex flex-col gap-12">
+        
+        {/* Header */}
+        <h1 className="text-4xl md:text-5xl font-bold text-[#E5E7EB] text-center">
+          About Me
+        </h1>
 
-      {/* Introduction */}
-      <div className="mb-8">
-        <p className="mb-4 text-justify">
-          I’m a software engineer with a strong background in backend development, cloud infrastructure, and automation, and I’m increasingly exploring frontend technologies and AI engineering. Over the years, I’ve delivered production systems that are reliable, scalable, and aligned with business goals, from high-throughput data pipelines to compliance-critical automation and AI-powered microservices.
-        </p>
-      </div>
+        {/* Intro Panel */}
+        <div className="bg-[#161B22]/80 p-8 rounded-xl shadow-md flex flex-col md:flex-row gap-8">
+          <div className="md:w-2/3 text-justify leading-relaxed">
+            <p className="mb-4">
+              I’m a software engineer with a strong backend foundation, cloud experience, and a growing focus on AI engineering. I design and deliver production-ready systems that are reliable, scalable, and aligned with real business needs.
+            </p>
+            <p className="mb-4">
+              My work spans microservices in <span className="text-accent">Go</span>, automation pipelines in <span className="text-accent">Python</span>, and SaaS-ready frontends in <span className="text-accent">Next.js</span>. I prioritize clean, maintainable architecture and measurable impact.
+            </p>
+          </div>
 
-      {/* Technical Expertise */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Technical Expertise</h2>
-        <p className="mb-4 text-justify">
-          My work spans multiple domains: building business-critical microservices in Go to integrate Azure and Google Cloud data, automating GDPR erasure workflows in Python on AWS Lambda, and developing AI-driven recommendation engines and automation pipelines using Tines and Python. I focus on designing end-to-end solutions that balance technical trade-offs, scalability, maintainability, and measurable impact.
-        </p>
-      </div>
+          {/* Optional Image / Illustration */}
+          <div className="md:w-1/3 flex justify-center items-start">
+            {/* Placeholder for profile or abstract graphic */}
+            <div className="w-40 h-40 bg-[#0F1115] rounded-xl shadow-lg flex items-center justify-center text-[#3B82F6] font-bold">
+              Me
+            </div>
+          </div>
+        </div>
 
-      {/* Approach & Philosophy */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Approach & Philosophy</h2>
-        <p className="mb-4 text-justify" >
-          I take a product-first approach, prioritising solutions that solve real problems for users and teams. This includes architecting detection-as-code frameworks, low-code automation workflows, threat intelligence APIs, and observability tools that improve operational efficiency and decision-making. I aim to reduce manual effort, improve visibility, and deliver tangible business outcomes.
-        </p>
-        <p className="text-justify">
-          Beyond delivery, I value clean architecture, observability, and writing systems that other engineers can understand and extend. I enjoy exploring new technologies responsibly, whether in AI, cloud, or automation, while keeping operational reliability and efficiency front and center.
-        </p>
-      </div>
+        {/* Skills / Expertise */}
+        <div className="bg-[#161B22]/70 p-8 rounded-xl shadow-md text-center">
+          <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-6">Technical Expertise</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {skills.map((skill) => (
+              <span 
+                key={skill}
+                className="px-4 py-2 rounded-full border border-[#30363D] bg-[#161B22] text-[#3B82F6] font-medium hover:bg-[#3B82F6]/10 transition"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
 
-      {/* Future Goals */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Looking Ahead</h2>
-        <p className="text-justify">
-          Looking forward, I’m eager to continue building SaaS products, expanding my work in AI engineering, and delivering systems that meet growing technical and business challenges. I bring a combination of deep backend expertise, pragmatic problem solving, and a drive to make meaningful impact in every project I touch.
-        </p>
+        {/* Philosophy / Approach */}
+        <div className="bg-[#161B22]/80 p-8 rounded-xl shadow-md">
+          <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-4 text-center">Approach & Philosophy</h2>
+          <p className="mb-4 leading-relaxed">
+            I take a product-first approach, building systems that solve real problems. From detection-as-code frameworks to AI-powered automation, I design with operational efficiency, scalability, and maintainability in mind.
+          </p>
+          <p className="leading-relaxed">
+            Beyond delivery, I value clean architecture, observability, and systems that engineers can easily understand and extend. Exploring AI, cloud, and automation responsibly while keeping reliability front and center is key.
+          </p>
+        </div>
+
+        {/* Future Goals */}
+        <div className="bg-[#161B22]/70 p-8 rounded-xl shadow-md text-center">
+          <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-4">Looking Ahead</h2>
+          <p className="leading-relaxed">
+            I’m focused on building SaaS products, expanding in AI engineering, and delivering high-impact systems that tackle growing technical and business challenges.
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -19,22 +19,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                try{
-                  const theme = localStorage.getItem('theme');
-                  if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch {}
-              })();
-            `,
-          }}
-        />
+        
       </head> 
-      <body className="bg-[#f8fafc] text-[#0F172A] dark:bg-[#0F1115] dark:text-[#E5E7EB] transition-colors duration-300">
+      <body className="bg-[#161B22] text-[#C9D1D9] transition-colors duration-300">
         <Navbar />
    
         {children}

@@ -1,90 +1,83 @@
 'use client';
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
+import { useState } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+const capabilities = [
+  {
+    title: "Backend Development",
+    description:
+      "4 years of experience designing and delivering scalable, maintainable systems in Go and Python, enabling teams to rely on stable, high-throughput services.",
+  },
+  {
+    title: "Cloud Architecture",
+    description:
+      "Designing end-to-end cloud solutions in AWS and Azure, handling authentication, observability, deployment pipelines, and background processing for real-world business impact.",
+  },
+  {
+    title: "AI Integrations",
+    description:
+      "Integrating AI/ML into applications driving the application's intelligence, especially in automative processes. I take a pragmatic approach to AI developed understanding the current capabities, limitations and boundaries of the technology.",
+  },
+  {
+    title: "Cyber Security",
+    description:
+      "Building detection-as-code frameworks, threat intelligence feeds, and automation workflows in both python and low-code that reduce operational risk while increasing visibility for decision-makers.",
+  },
+  {
+    title: "Frontend Development",
+    description:
+      "Crafting performant, user-centric interfaces in Next.js and React to complement end-to-end engineering solutions and product experiences.",
+  },
+  {
+    title: "Communication & Collaboration",
+    description:
+      "Effectively articulating technical solutions, presenting sprint demos, and collaborating across teams to align engineering outcomes with business goals.",
+  },
+  {
+    title: "Product Thinking",
+    description:
+      "Applying a growing product-first mindset to engineering decisions, prioritizing user impact, iterative feedback, and measurable success over purely technical metrics.",
+  },
+];
+
 
 export default function About() {
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!aboutRef.current) return;
-
-    // Animate text
-   const ctx = gsap.context(() => {
-      gsap.from(".about-item", {
-      scrollTrigger: {
-        trigger: ".about-section",
-        start: "top 80%",
-      },
-      opacity: 0,
-      y: 20,
-      stagger: 0.15,
-      duration: 1.0,
-      ease: "power3.out",
-    });
-
-    // Animate image 
-    if (imageRef.current) {
-      gsap.from(imageRef.current, {
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: "top 80%",
-        },
-        opacity: 0,
-        x: 50, 
-        duration: 1,
-        ease: "power3.out",
-      });
-    }
-  }, aboutRef);
-
-  return () => {
-      ctx.revert(); 
-    };
-  }, []);
+  const [active, setActive] = useState(0);
 
   return (
-    <section ref={aboutRef} className="pt-40 pb-28 md:pt-48 md:pb-32 about-section">
-      <div className="mx-auto max-w-3xl flex flex-col md:flex-row items-center gap-8 px-4">
+    <section className="py-48 px-6 bg-[#161B22] text-[#C9D1D9]">
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-center gap-12">
 
-        <div className="md:w-1/2 text-text text-center md:text-left">
-          <h2 className="text-3xl font-semibold text-center mb-6">About</h2>
-          <p className="about-item leading-relaxed text-muted-foreground mb-4">
-            I’m Dermot, a software engineer with 4 years of experience building
-            clean, scalable, and reliable systems.
-          </p>
-          <p className="about-item leading-relaxed text-muted-foreground mb-4">
-            My background is rooted in backend engineering, with a focus on delivering
-            performant and maintainable solutions. AI engineering has become a particular point of interest to me,
-            integrating generative capabilities into applications both professionally and personally.
-          </p>
-          <ul className="about-item text-sm text-center mt-4">
-            <li>Go</li>
-            <li>Next.js / React</li>
-            <li>Python</li>
-            <li>PostgreSQL</li>
-          </ul>
-        </div>
+        <div className="md:w-3/5 p-2 flex flex-col gap-4">
+          <h3 className="text-xl font-medium mb-4 text-[#E5E7EB] text-center">Engineering Snapshot</h3>
 
-        <div
-          ref={imageRef}
-          className="md:w-1/2 flex justify-center md:justify-end -mt-8 md:-mt-12"
-        >
-          <Image
-            src="/profile-pic.jpg"
-            alt="Dermot Bruce"
-            width={320}
-            height={320}
-            className="rounded-lg shadow-lg"
-            />
+          {/* Row with buttons and description */}
+          <div className="flex flex-col md:flex-row gap-16 md:ml-[-5rem]">
+            {/* Titles list */}
+            <div className="flex flex-col gap-3 md:flex-[1]">
+              {capabilities.map((cap, idx) => (
+                <button
+                  key={idx}
+                  onMouseEnter={() => setActive(idx)}
+                  className={`text-left px-3 py-2 rounded-lg transition-colors duration-200 ${
+                    idx === active
+                      ? "bg-[#3B82F6]/20 text-[#3B82F6]"
+                      : "hover:bg-[#3B82F6]/10"
+                  }`}
+                >
+                  {cap.title}
+                </button>
+              ))}
+            </div>
+
+            {/* Description panel */}
+            <div className="md:flex-[2] p-3 rounded-lg min-h-[120px]">
+              <p className="text-[#C9D1D9]">{capabilities[active].description}</p>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

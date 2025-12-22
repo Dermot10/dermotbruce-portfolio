@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between py-6 px-6 max-w-5xl mx-auto">
       <Link href="/" className="text-2xl font-bold">
-        Dermot Bruce-Agbeko
+        Home
       </Link>
 
       <div className="flex items-center gap-6">

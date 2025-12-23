@@ -94,7 +94,7 @@ export default function ExperienceTimelinePage() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-48 max-w-5xl mx-auto px-4">
+    <section ref={sectionRef} className="relative py-24 max-w-5xl mx-auto px-4">
       <h2 className="text-3xl font-semibold text-center mb-16">Experience</h2>
 
       <div className="relative">

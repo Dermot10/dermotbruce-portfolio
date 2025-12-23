@@ -9,7 +9,7 @@ export default function ContactPage(){
                     LinkedIn:   {" "}
                     <a
                         href="https://www.linkedin.com/in/dermot-bruce-agbeko-242869221/"
-                        className="text-blue-600 hover:underline transition"
+                        className="text-[#3B82F6] hover:underline transition"
                     >
                         https://www.linkedin.com/in/dermot-bruce-agbeko-242869221/
                     </a>

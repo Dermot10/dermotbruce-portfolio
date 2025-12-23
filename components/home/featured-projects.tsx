@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const projects = [
   { title: 'GCS-Connector', description: 'Integration between Azure Data Lake and Google Cloud Storage', slug: 'gcs-connector' },
-  { title: 'Pokedex Game', description: 'Automated Pokémon game powered by AI functionality', slug: 'tines-automation' },
+  { title: 'Pokedex Game', description: 'Automated Pokémon game powered by AI functionality', slug: 'pokemon-ai-game' },
 ];
 
 export default function FeaturedProjects() {

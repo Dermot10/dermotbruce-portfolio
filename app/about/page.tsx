@@ -1,41 +1,93 @@
 'use client';
 
-import { FaCode, FaCloud, FaBrain } from 'react-icons/fa';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutPage() {
-  const skills = ["Go", "Next.js / React", "Python", "PostgreSQL", "AI / Automation"];
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+    useEffect(() => {
+      const boxes = document.querySelectorAll<HTMLElement>('.about-box');
 
+      boxes.forEach((box) => {
+        gsap.set(box, { opacity: 0, y: 50 });
+
+        gsap.to(box, {
+          scrollTrigger: {
+            trigger: box,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+        });
+      });
+
+      // cleanup
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+      };
+    }, []);
+
+
+
+  const skills = ["Python", "Go", "SQL",
+    "Linux","AWS", "Azure","Docker" ,"Kubernetes","RabbitMQ", 
+    "FastAPI", "Django", "React", "Next.js",
+    "Gen AI", "Langchain", "Scikit-learn", "Pandas", "Numpy", "Matplotlib",
+    "Playwright", "Postman", 
+    "Tines",  "Splunk", 
+  ];
+
+
+ 
   return (
     <section className="py-16 bg-[#161B22] text-[#C9D1D9] min-h-screen">
       <div className="max-w-5xl mx-auto px-6 flex flex-col gap-12">
-        
+
         {/* Header */}
         <h1 className="text-4xl md:text-5xl font-bold text-[#E5E7EB] text-center">
           About Me
         </h1>
 
         {/* Intro Panel */}
-        <div className="bg-[#161B22]/80 p-8 rounded-xl shadow-md flex flex-col md:flex-row gap-8">
+        <div className="about-box bg-[#161B22]/80 p-8 rounded-xl shadow-lg flex flex-col md:flex-row gap-8 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
           <div className="md:w-2/3 text-justify leading-relaxed">
             <p className="mb-4">
-              I’m a software engineer with a strong backend foundation, cloud experience, and a growing focus on AI engineering. I design and deliver production-ready systems that are reliable, scalable, and aligned with real business needs.
+              I’m a software engineer with strong backend engineering and cloud experience, with an ever-growing focus on AI and how it can be applied to various use-cases safely.
+              My work spans high-throughput microservices in <span className="text-[#3B82F6]">Go</span>, production-ready APIs in <span className="text-[#3B82F6]">Python</span>, and the orchestration of security and operational workflows with both code and low-code solutions. 
+              I build systems that are reliable, maintainable, and aligned with real-world business needs.
             </p>
             <p className="mb-4">
-              My work spans microservices in <span className="text-accent">Go</span>, automation pipelines in <span className="text-accent">Python</span>, and SaaS-ready frontends in <span className="text-accent">Next.js</span>. I prioritize clean, maintainable architecture and measurable impact.
+              I approach engineering with a <span className="text-[#3B82F6]">product-first</span> mindset: starting from user requirements, working backward to technical constraints, and designing solutions with both functional and non-functional requirements in mind. Prior to coding I focus on <span className="text-[#3B82F6]">clean architecture, observability, and scalable patterns</span>, ensuring that systems are easy to understand, extend, and maintain for the teams I work with.
+            </p>
+            <p className="leading-relaxed">
+              Outside of work, I enjoy a variety of hobbies, from gaming and reading to following football. I frequently go to the gym and for walks believing a healthy body fosters a healthy mind, which in turn strengthens the quality of my work.   
+              I’m also <span className="text-[#3B82F6]">passionate</span> about meeting new people and learning from different perspectives. While networking can sometimes feel unnatural, I genuinely enjoy the opportunity to connect and exchange ideas with others.
             </p>
           </div>
 
-          {/* Optional Image / Illustration */}
-          <div className="md:w-1/3 flex justify-center items-start">
-            {/* Placeholder for profile or abstract graphic */}
-            <div className="w-40 h-40 bg-[#0F1115] rounded-xl shadow-lg flex items-center justify-center text-[#3B82F6] font-bold">
-              Me
-            </div>
+          {/* Profile pic next to intro */}
+          <div className="md:w-1/3 flex justify-center items-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+            <Image
+              src="/linkedin-profile-pic-bw.jpeg"
+              alt="Dermot Bruce"
+              width={300}
+              height={300}
+              className="rounded-xl shadow-lg object-cover"
+            />
           </div>
         </div>
 
         {/* Skills / Expertise */}
-        <div className="bg-[#161B22]/70 p-8 rounded-xl shadow-md text-center">
+        <div className="about-box bg-[#161B22]/70 p-8 rounded-xl shadow-lg text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
           <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-6">Technical Expertise</h2>
           <div className="flex flex-wrap justify-center gap-4">
             {skills.map((skill) => (
@@ -49,24 +101,23 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Philosophy / Approach */}
-        <div className="bg-[#161B22]/80 p-8 rounded-xl shadow-md">
-          <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-4 text-center">Approach & Philosophy</h2>
+        {/* Approach & Philosophy */}
+        <div className="about-box bg-[#161B22]/80 p-8 rounded-xl shadow-md text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
+          <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-4">Approach & Philosophy</h2>
           <p className="mb-4 leading-relaxed">
-            I take a product-first approach, building systems that solve real problems. From detection-as-code frameworks to AI-powered automation, I design with operational efficiency, scalability, and maintainability in mind.
-          </p>
-          <p className="leading-relaxed">
-            Beyond delivery, I value clean architecture, observability, and systems that engineers can easily understand and extend. Exploring AI, cloud, and automation responsibly while keeping reliability front and center is key.
+            I began as a backend developer driven by a desire to build intelligent, high-impact systems. While I take pride in well-executed solutions, I have come to value simplicity, scalability, and clarity above all. 
+            Over time, I’ve developed a mental framework that guides my work: a product-first approach that starts with user needs, works backward to technical constraints, and constructs code from the desired output to the inputs. This approach ensures solutions are robust, maintainable, and aligned with real-world impact.
           </p>
         </div>
 
-        {/* Future Goals */}
-        <div className="bg-[#161B22]/70 p-8 rounded-xl shadow-md text-center">
+        {/* Looking Ahead */}
+        <div className="about-box bg-[#161B22]/70 p-8 rounded-xl shadow-md text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
           <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-4">Looking Ahead</h2>
           <p className="leading-relaxed">
-            I’m focused on building SaaS products, expanding in AI engineering, and delivering high-impact systems that tackle growing technical and business challenges.
+            I’m focused on building <span className="text-[#3B82F6]">SaaS</span> products, expanding in <span className="text-[#3B82F6]">AI engineering</span>, and continually delivering high-impact systems that tackle growing technical and business challenges.
           </p>
         </div>
+
       </div>
     </section>
   );

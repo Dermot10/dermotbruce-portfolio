@@ -15,7 +15,7 @@ export default function FeaturedProjects() {
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: "url(/blue-purple-main.jpg)" }}
       />
-      <div className="absolute inset-0 bg-[#161B22]/70 z-0"></div> {/* Dim overlay */}
+      <div className="absolute inset-0 bg-[#161B22]/70 z-0"></div> =={/* Dim overlay */}
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <h2 className="text-3xl font-semibold mb-8 text-[#E5E7EB] text-center">Featured Builds</h2>

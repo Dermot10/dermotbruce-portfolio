@@ -11,9 +11,11 @@ const experience = [
     role: 'Software Engineer',
     company: 'Freelance',
     period: '2025 - ',
-    description:
-      ` • Operated as a full-stack engineer, designing and developing MVP for Saas product.`
-    
+    description: 
+    ` • Operated as a full-stack engineer, designing and delivering a private MVP SaaS platform for an SEO consultancy.
+      • Collaborated directly with the client to translate business requirements into technical solutions.
+      • Built and deployed production-ready features with a focus on scalability, performance, and maintainability.`
+
   },
   {
     role: 'Software Engineer',

@@ -70,7 +70,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         )} */}
 
         {/* Case study boxes */}
-        <section className="grid gap-8 mb-20">
+        <section className="grid gap-8 mb-20 ">
           {data.problem && <CaseBox title="Problem" icon="❓">{data.problem}</CaseBox>}
           {data.solution && <CaseBox title="Solution" icon="🛠️">{data.solution}</CaseBox>}
           {data.impact && <CaseBox title="Impact" icon="📈">{data.impact}</CaseBox>}
@@ -135,7 +135,7 @@ function CaseBox({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-[#30363D] bg-[#161B22] p-8">
+    <div className="rounded-2xl border border-[#30363D] bg-[#161B22] p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
       <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-4">
         {icon && <span className="mr-2">{icon}</span>}
         {title}

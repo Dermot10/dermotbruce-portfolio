@@ -44,7 +44,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <article className="bg-[#0D1117] text-[#C9D1D9] min-h-screen py-16">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
         <header className="mb-14">
           <h1 className="text-4xl font-bold text-[#E5E7EB] mb-4">{data.title}</h1>
           {data.shortDescription && (
@@ -124,7 +123,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   );
 }
 
-/* ---------- Reusable Case Box ---------- */
+
 function CaseBox({
   title,
   icon,

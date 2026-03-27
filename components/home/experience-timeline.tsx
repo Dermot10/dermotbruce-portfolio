@@ -12,9 +12,11 @@ const experience = [
     company: 'Freelance',
     period: '2025 - ',
     description: 
-    ` • Operated as a full-stack engineer, designing and delivering a private MVP SaaS platform for an SEO consultancy.
-      • Collaborated directly with the client to translate business requirements into technical solutions.
-      • Built and deployed production-ready features with a focus on scalability, performance, and maintainability.`
+    ` • Architecting and delivering a range of automations and integrations.
+      • Collaborating directly with the clients to translate functional business requirements into technical solutions.
+      • Deploying real-world production ready solutions that make an impact to business owners. 
+      • Prioritising solutions with a focus on scalability, performance, and maintainability.
+      `
 
   },
   {
@@ -127,7 +129,6 @@ export default function ExperienceTimelinePage() {
               {/* Description with optional nested bullets */}
               <div className="mt-4 text-text leading-relaxed">
                 {idx === 2 ? (
-                  // Special case for H&B with nested points
                   <ul className="list-disc ml-5 space-y-2">
                     <li>
                       Automated internal processes for cybersecurity team, using both Python and low-code solution Tines.

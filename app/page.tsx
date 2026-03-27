@@ -1,5 +1,3 @@
-// homepage for the site
-
 import Hero from '../components/home/hero';
 import FeaturedProjects from '../components/home/featured-projects'
 import About from '../components/home/about';

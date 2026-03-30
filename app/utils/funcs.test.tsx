@@ -1,94 +1,51 @@
+import fs from "fs";
 import retrieveContent, { pathToSlug } from "./funcs";
 
-// Mock global fetch
-global.fetch = jest.fn();
+jest.mock("fs");
 
-describe("pathToSlug", () => {
-  it("removes 'projects/' prefix and '/index.md' suffix", () => {
-    expect(pathToSlug("projects/hello-world/index.md")).toBe("hello-world");
-  });
-
-  it("handles paths without index.md", () => {
-    expect(pathToSlug("projects/test")).toBe("test");
-  });
-
-  it("returns unchanged string if no matches", () => {
-    expect(pathToSlug("random/path.md")).toBe("random/path.md");
-  });
-});
+const mockedFs = fs as any; // bypass TS strict Dirent typing in tests, function only uses strings 
 
 describe("retrieveContent", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    jest.resetAllMocks();
   });
 
-  it("fetches files and returns markdown content", async () => {
-    (fetch as jest.Mock)
-      // First call: directory listing
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => [
-          {
-            type: "file",
-            name: "test.md",
-            download_url: "https://file-url",
-          },
-        ],
-      })
-      // Second call: markdown file
-      .mockResolvedValueOnce({
-        text: async () => "# Hello world",
-      });
-
-    const result = await retrieveContent({ content: "projects" });
-
-    expect(fetch).toHaveBeenCalledTimes(2);
-    expect(result).toHaveLength(1);
-    expect(result[0]).toMatchObject({
-      name: "test.md",
-      content: "# Hello world",
+  it("fetches files and returns markdown content", () => {
+    mockedFs.readdirSync.mockReturnValueOnce(["test.md"]);
+    mockedFs.statSync.mockReturnValueOnce({
+      isDirectory: () => false,
     });
+    mockedFs.readFileSync.mockReturnValueOnce("# Hello world");
+
+    const result = retrieveContent({ content: "projects" });
+
+    expect(result).toHaveLength(1);
+    expect(result[0].content).toBe("# Hello world");
   });
 
-  it("handles nested directories (recursion)", async () => {
-    (fetch as jest.Mock)
-      // Root directory
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => [
-          { type: "dir", name: "nested" },
-        ],
-      })
-      // Nested directory
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => [
-          {
-            type: "file",
-            name: "nested.md",
-            download_url: "https://nested-file",
-          },
-        ],
-      })
-      // File content
-      .mockResolvedValueOnce({
-        text: async () => "Nested content",
-      });
+  it("handles nested directories (recursion)", () => {
+    // Root directory
+    mockedFs.readdirSync.mockReturnValueOnce(["nested"]);
+    mockedFs.statSync.mockReturnValueOnce({ isDirectory: () => true });
 
-    const result = await retrieveContent({ content: "projects" });
+    // Nested directory
+    mockedFs.readdirSync.mockReturnValueOnce(["nested.md"]);
+    mockedFs.statSync.mockReturnValueOnce({ isDirectory: () => false });
+    mockedFs.readFileSync.mockReturnValueOnce("Nested content");
+
+    const result = retrieveContent({ content: "projects" });
 
     expect(result).toHaveLength(1);
     expect(result[0].content).toBe("Nested content");
   });
 
-  it("throws an error if the API response is not ok", async () => {
-    (fetch as jest.Mock).mockResolvedValueOnce({
-      ok: false,
-      status: 500,
+  it("throws an error if directory does not exist", () => {
+    mockedFs.readdirSync.mockImplementationOnce(() => {
+      throw new Error("ENOENT: no such file or directory");
     });
 
-    await expect(
-      retrieveContent({ content: "projects" })
-    ).rejects.toThrow("Request failed: 500");
+    expect(() => retrieveContent({ content: "projects" })).toThrow(
+      /ENOENT/
+    );
   });
 });

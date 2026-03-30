@@ -8,13 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experience = [
   {
-    role: 'Software Engineer',
+    role: 'Senior Software Engineer',
     company: 'Freelance',
     period: '2025 - ',
     description: 
-    ` • Architecting and delivering a range of automations and integrations.
+    ` • Architecting FastAPI-based API integrations for booking and management system, with task specific AI-agents to streamline operational workflows. 
       • Collaborating directly with the clients to translate functional business requirements into technical solutions.
-      • Deploying real-world production ready solutions that make an impact to business owners. 
       • Prioritising solutions with a focus on scalability, performance, and maintainability.
       `
 

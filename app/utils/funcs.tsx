@@ -1,31 +1,41 @@
-export default async function retrieveContent({ content }: { content: string }) {
-  const url = `${process.env.GITHUB_API}${content}`;
+import fs from "fs";
+import path from "path";
 
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-    },
-    next: {revalidate:3600}, // IMPORTANT
-  });
 
-  if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+type ContentFile = {
+  name: string;
+  path: string;
+  content: string;
+};
 
-  const items: any[] = await res.json();
-  const files: any[] = [];
+export default function retrieveContent({ content }: {content: string }) {
+  const basePath = path.join(process.cwd(), "content", content);
 
-  for (const item of items) {
-    if (item.type === "file" && item.download_url) {
-      const markdownRes = await fetch(item.download_url, {next: {revalidate:3600},});
-      const markdown = await markdownRes.text(); 
-      files.push({ ...item, content: markdown });
-    } else if (item.type === "dir") {
-      const nestedFiles = await retrieveContent({ content: `${content}/${item.name}` });
-      files.push(...nestedFiles);
-    }
+  function walk(dir: string): ContentFile[]{
+    const files = fs.readdirSync(dir);
+
+    return files.flatMap((file) : ContentFile[] => {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+
+      if (stat.isDirectory()) {
+        return walk(fullPath);
+      }
+
+      return [
+        {
+          name: file,
+          path: fullPath
+            .replace(process.cwd(), "")
+            .replace(/\\/g, "/")
+            .replace(/^\/content\//, ""),
+          content: fs.readFileSync(fullPath, "utf8"),
+        },
+      ];
+    });
   }
 
-  return files;
+  return walk(basePath);
 }
 
 
@@ -35,3 +45,5 @@ export function pathToSlug(path: string) {
     .replace(/^projects\//, "")
     .replace(/\/index\.md$/, "");
 }
+
+

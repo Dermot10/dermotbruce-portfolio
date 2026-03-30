@@ -26,5 +26,5 @@ export default {
       backgroundColor: ['hover', 'focus'], // accentHover works
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

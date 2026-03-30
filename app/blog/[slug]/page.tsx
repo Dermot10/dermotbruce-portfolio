@@ -24,10 +24,13 @@ export default async function BlogPostPage({ params }: any) {
   const contentHtml = (await remark().use(html).process(content)).toString();
 
   return (
-    <article className="max-w-3xl mx-auto py-12">
-      <h1 className="text-4xl font-bold mb-4">{data.title}</h1>
-      <p className="text-text-muted mb-8">{data.date}</p>
-      <div className="prose" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+    <article className="max-w-3xl mx-auto px-6 py-16">
+      <h1 className="text-4xl font-bold mb-4 text-[#E5E7EB]">{data.title}</h1>
+      <p className="text-text-muted italic mb-8">{data.date}</p>
+      <div
+        className="space-y-6 [&>p]:mb-4 [&>ul]:mb-4 [&>ol]:mb-4 [&>li]:mb-2 [&>h2]:mt-8 [&>h2]:mb-2 [&>h3]:mt-6 [&>h3]:mb-2"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
     </article>
   );
 }

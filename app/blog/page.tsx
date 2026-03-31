@@ -5,15 +5,17 @@ import retrieveContent from "../utils/funcs";
 export default async function BlogPage() {
   const posts = await retrieveContent({ content: "posts" });
 
-  const parsedPosts = posts.map((post) => {
+  const parsedPosts = posts
+  .map((post) => {
     const { data, content } = matter(post.content);
     return {
       title: data.title,
       date: data.date,
       slug: post.name.replace(/\.md$/, ""),
-      excerpt: content.substring(0, 120),
+      excerpt: content.slice(0, 120).replace(/\r?\n/g, " ")
     };
-  });
+  })
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <section className="py-16 bg-[#161B22] text-[#C9D1D9] min-h-screen">

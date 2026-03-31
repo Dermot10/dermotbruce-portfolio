@@ -36,11 +36,11 @@ export default function AboutPage() {
 
 
   const skills = ["Python", "Go", "SQL",
-    "Linux","AWS", "Azure","Docker" ,"Kubernetes","RabbitMQ", 
+    "Cyber Security", "Linux", "AWS", "Azure", 
+    "Docker", "Kubernetes", "RabbitMQ", 
     "FastAPI", "Django", "React", "Next.js",
-    "Gen AI", "Langchain", "Scikit-learn", "Pandas", "Numpy", "Matplotlib",
-    "Playwright", "Postman", 
-    "Tines",  "Splunk", 
+    "Gen AI", "Langchain", "Pandas", "Numpy", "Matplotlib", 
+    "Postman", "Tines",  "Splunk", 
   ];
 
 
@@ -91,9 +91,9 @@ export default function AboutPage() {
         <div className="about-box bg-[#161B22]/70 p-8 rounded-xl shadow-lg text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
           <h2 className="text-2xl font-semibold text-[#E5E7EB] mb-6">Ways I Work</h2>
           <div className="text-center max-w-3xl mx-auto space-y-4">
-            <p>• Contract engineering across backend systems, APIs, and cloud infrastructure</p>
-            <p>• Building internal tools and platforms to improve business productivity and operations</p>
-            <p>• Automation and AI integration to optimise existing systems and workflows</p>
+            <p>• Engineering than encompasses varying backend systems, APIs, security and cloud infrastructure</p>
+            <p>• Building internal tools and platforms to improve business productivity and operations, specialising in cybersecurity</p>
+            <p>• Automation and AI integrations to optimise existing systems and workflows</p>
             <p>• End-to-end product development, from concept through to production</p>
           </div>
           <p className="mt-6 text-[#9CA3AF]">

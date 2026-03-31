@@ -13,7 +13,7 @@ export default function ContactPage(){
                     >
                         https://www.linkedin.com/in/dermot-bruce-agbeko-242869221/
                     </a>
-                    </p> 
+                </p> 
         </section>
   );
 }

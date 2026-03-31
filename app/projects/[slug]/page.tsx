@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import retrieveContent from "../../utils/funcs";
+import retrieveContent, { pathToSlug } from "../../utils/funcs";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string[] }>;
@@ -15,8 +15,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const projectFile = files.find((file) => {
     if (file.name !== "index.md") return false;
-    const pathSlug = file.path.replace(/^projects\//, "").replace("/index.md", "");
-    return pathSlug === slugPath;
+    return pathToSlug(file.path) === slugPath;
   });
 
   if (!projectFile) {

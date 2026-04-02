@@ -8,13 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experience = [
   {
-    role: 'Senior Software Engineer',
+    role: 'Software Engineer',
     company: 'Freelance',
     period: '2025 - ',
     description: 
-    ` • Architecting FastAPI-based API integrations for booking and management system, with task specific AI-agents to streamline operational workflows. 
+    ` • Architecting FastAPI-based API integrations, with task specific AI-agents to streamline operational workflows. 
       • Collaborating directly with the clients to translate functional business requirements into technical solutions.
-      • Designing and implemented CI/CD pipeline and automation tooling to accelerate development, enforce testing, reliablity and prod-grade deployments.
+      • Designing and implemented CI/CD pipeline and automation tooling to accelerate development, enforce testing, implement security checks, general reliablity and prod-grade deployments.
       • Prioritising solutions with a focus on scalability, performance, and maintainability.
       `
 

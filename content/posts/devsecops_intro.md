@@ -11,7 +11,7 @@ summary: My return to cyber security and my cross-discipline approach to enginee
 
 DevSecOps is an often underrepresented intersection of software development, cyber security, and DevOps. It brings these disciplines together to ensure that software is delivered securely and reliably, with the goal of minimising vulnerabilities throughout the entire build and deployment lifecycle.
 
-At its core, DevSecOps shifts security from being an afterthought to a fundamental part of the development process. Instead of addressing vulnerabilities late in the cycle, security is embedded from the outset — integrated into how software is designed, built, and deployed.
+At its core, DevSecOps shifts security from being an afterthought to a fundamental part of the development process. Instead of addressing vulnerabilities late in the cycle, security is embedded from the outset — integrated into how software is designed, built, and deployed. Threat modelling being a key component of this process. 
 
 With the rise of generative AI and increasingly sophisticated cyber attacks, this approach is becoming less of an advantage and more of a necessity. Organisations that fail to adopt a proactive security posture will inevitably face the consequences.
 

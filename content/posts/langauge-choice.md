@@ -3,7 +3,7 @@ title: "System Design Choices"
 date: "2026-04-07"
 tags: ["Software Engineering", "System Design", "Go", "Python"]
 summary: "Why I chose Go for performance-critical systems and Python for AI-driven workloads"
----------------------------------------------------------------------------------------------
+---
 
 # System Design Choices
 

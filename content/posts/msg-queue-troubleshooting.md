@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting System Design"
+title: "Troubleshooting System Design Level"
 date: "2026-04-12"
 tags: ["Message Queues", "Software Engineering", "Debugging"]
 summary: "Debugging at the system design level"
